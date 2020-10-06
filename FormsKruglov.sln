@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsKruglov", "FormsKruglov\FormsKruglov.csproj", "{74BB9041-83B2-4253-BE6E-2B29997C958C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74BB9041-83B2-4253-BE6E-2B29997C958C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BB9041-83B2-4253-BE6E-2B29997C958C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BB9041-83B2-4253-BE6E-2B29997C958C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BB9041-83B2-4253-BE6E-2B29997C958C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {920884E5-309B-448B-B6CD-4540B1A8C760}
+	EndGlobalSection
+EndGlobal

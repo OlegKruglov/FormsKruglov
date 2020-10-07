@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.CSharp.RuntimeBinder;
+using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +22,9 @@ namespace FormsKruglov
         CheckBox box_lbl, box_btn;
         RadioButton r1, r2;
         TextBox txt_box;
+        PictureBox picture;
+        TabControl tabControl;
+        TabPage page1, page2, page3;
         public Form1()
         {
             this.Height = 500;
@@ -40,12 +45,15 @@ namespace FormsKruglov
             lbl = new Label();
             lbl.Text = "Tarkavara arendajad";
             lbl.Size = new Size(150, 30);
-            lbl.Location = new Point(150, 50);
+            lbl.Location = new Point(150, 200);
             tn.Nodes.Add(new TreeNode("Märkeruut-Checkbox"));
             tree.Nodes.Add(tn);
             this.Controls.Add(tree);
             tn.Nodes.Add(new TreeNode("Radionupp-Radiobutton"));
             tn.Nodes.Add(new TreeNode("Tekstikast-Textbox"));
+            tn.Nodes.Add(new TreeNode("Pildikast-PictureBox"));
+            tn.Nodes.Add(new TreeNode("Kaart-TabControl"));
+            tn.Nodes.Add(new TreeNode("MessageBox"));
         }
 
         private void Tree_AfterSelect(object sender, TreeViewEventArgs e)
@@ -58,7 +66,7 @@ namespace FormsKruglov
             {
                 this.Controls.Add(lbl);
             }
-            else if (e.Node.Text == "Märkeruut-CheckBox")
+            else if (e.Node.Text == "Märkeruut-Checkbox")
             {
                 box_btn = new CheckBox();
                 box_btn.Text = "Näita nupp";
@@ -87,6 +95,48 @@ namespace FormsKruglov
                 this.Controls.Add(r2);
                 this.Controls.Add(r1);
             }
+            else if (e.Node.Text == "Pildikast-PictureBox")
+            {
+                picture = new PictureBox();
+                picture.Image = new Bitmap("csharp.png");
+                picture.Location = new Point(300, 0);
+                picture.Size = new Size(300, 300);
+                picture.SizeMode = PictureBoxSizeMode.Zoom;
+                picture.BorderStyle = BorderStyle.Fixed3D;
+                Controls.Add(picture);
+            }
+            else if (e.Node.Text == "Kaart-TabControl")
+            {
+                tabControl = new TabControl();
+                tabControl.Location = new Point(300, 300);
+                tabControl.Size = new Size(200, 100);
+                page1 = new TabPage("Esimene");
+                page1.BackColor = Color.LightSeaGreen;
+                page2 = new TabPage("Teine");
+                page2.BackColor = Color.Bisque;
+                page3 = new TabPage("Kolmas");
+                page3.BackColor = Color.DarkGoldenrod;
+                tabControl.Controls.Add(page1);
+                tabControl.Controls.Add(page2);
+                tabControl.Controls.Add(page3);
+                tabControl.SelectedIndex = 2;
+                Controls.Add(tabControl);
+                
+            }
+            else if (e.Node.Text == "MessageBox")
+            {
+                MessageBox.Show("MessageBox", "Kõige lihtsam aken");
+                var answer= MessageBox.Show("Tahad InpudBoxi näha?", "Aken koos nupudega", MessageBoxButtons.YesNo);
+                if (answer == DialogResult.Yes)
+                {
+                   string text=Interaction.InputBox("Sisesta siia mingi tekst", "InputBox", "Mingi tekst");
+                    if (MessageBox.Show("Kas tahad tekst saada Tekskastisse?", "Teksti salevestamine", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        lbl.Text = text;
+                        Controls.Add(lbl);
+                    }
+                }
+            }
             else if (e.Node.Text == "Tekstikast-Textbox")
             {
                 txt_box = new TextBox();
@@ -112,11 +162,11 @@ namespace FormsKruglov
         {
             if(r1.Checked)
             {
-                btn.Location = new Point(150, 100);
+                btn.Location = new Point(300, 100);
             }
             else if (r2.Checked)
             {
-                btn.Location = new Point(400, 100);
+                btn.Location = new Point(100, 100);
             }
         }
 

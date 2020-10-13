@@ -28,7 +28,6 @@ namespace FormsKruglov
         TabControl tabControl;
         TabPage page1, page2, page3;
         ListBox lbox;
-        DataGridView dgv;
         private Color[] ColorL;
         private Random rnd = new Random();
         public Form1()
@@ -181,7 +180,9 @@ namespace FormsKruglov
                 MainMenu menu = new MainMenu();
                 MenuItem menuitem1 = new MenuItem("File");
                 menuitem1.MenuItems.Add("Exit",new EventHandler(menuitem1_Exit));
-                menuitem1.MenuItems.Add("Change BG",new EventHandler(menuitem2_BG));
+                menuitem1.MenuItems.Add("Change BG",new EventHandler(menuitem1_BG));
+                menuitem1.MenuItems.Add("Refresh", new EventHandler(menuitem1_Refresh));
+                menuitem1.MenuItems.Add("New Form", new EventHandler(menuitem1_NewForm));
                 menu.MenuItems.Add(menuitem1);
                 this.Menu = menu;
             }
@@ -207,7 +208,20 @@ namespace FormsKruglov
         }
         }
 
-        private void menuitem2_BG(object sender, EventArgs e)
+        private void menuitem1_NewForm(object sender, EventArgs e)
+        {
+            Form1 newForm = new Form1();
+            newForm.Show();
+        }
+
+        private void menuitem1_Refresh(object sender, EventArgs e)
+        {
+            Controls.Clear();
+            Controls.Add(tree);
+            BackColor = DefaultBackColor;
+        }
+
+        private void menuitem1_BG(object sender, EventArgs e)
         {
             Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
@@ -218,6 +232,7 @@ namespace FormsKruglov
         {
             ListBox lb = sender as ListBox;
             lb.BackColor = ColorL[lbox.SelectedIndex];
+            this.BackColor = ColorL[lbox.SelectedIndex];
         }
 
         private void menuitem1_Exit(object sender, EventArgs e)

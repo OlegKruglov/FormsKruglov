@@ -106,7 +106,7 @@ namespace FormsKruglov
         else if (e.Node.Text == "Pildikast-PictureBox")
         {
             picture = new PictureBox();
-            picture.Image = new Bitmap("csharp.png");
+            picture.Image = new Bitmap("e.png");
             picture.Location = new Point(300, 0);
             picture.Size = new Size(300, 300);
             picture.SizeMode = PictureBoxSizeMode.Zoom;
@@ -165,7 +165,7 @@ namespace FormsKruglov
         else if (e.Node.Text == "DataGridView")
             {
                 DataSet dataSet = new DataSet("Näide");
-                //dataSet.ReadXml("C:\Users\opilane\source\repos\OlegKruglovTARpv19\FormsKruglov\FormsKruglov\XMLex.xml");
+                dataSet.ReadXml("XMLex.xml");
                 DataGridView dgv = new DataGridView();
                 dgv.Location = new Point(200, 200);
                 dgv.Width = 400;

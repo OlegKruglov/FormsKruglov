@@ -92,12 +92,12 @@ namespace FormsKruglov
         {
             r1 = new RadioButton();
             r1.Text = "nupp vasakule";
-            r1.Location = new Point(300, 30);
+            r1.Location = new Point(320, 30);
             r1.CheckedChanged += new EventHandler(RadioButton_Changed);
 
             r2 = new RadioButton();
             r2.Text = "nupp paremale";
-            r2.Location = new Point(300, 70);
+            r2.Location = new Point(320, 70);
             r2.CheckedChanged += new EventHandler(RadioButton_Changed);
 
             this.Controls.Add(r2);
@@ -106,9 +106,9 @@ namespace FormsKruglov
         else if (e.Node.Text == "Pildikast-PictureBox")
         {
             picture = new PictureBox();
-            picture.Image = new Bitmap("e.png");
-            picture.Location = new Point(300, 0);
-            picture.Size = new Size(300, 300);
+            picture.Image = new Bitmap("c.png");
+            picture.Location = new Point(500, 0);
+            picture.Size = new Size(100, 100);
             picture.SizeMode = PictureBoxSizeMode.Zoom;
             picture.BorderStyle = BorderStyle.Fixed3D;
             Controls.Add(picture);
@@ -116,7 +116,7 @@ namespace FormsKruglov
         else if (e.Node.Text == "Kaart-TabControl")
         {
             tabControl = new TabControl();
-            tabControl.Location = new Point(300, 300);
+            tabControl.Location = new Point(350, 100);
             tabControl.Size = new Size(200, 100);
             page1 = new TabPage("Esimene");
             page1.BackColor = Color.LightSeaGreen;
@@ -155,7 +155,7 @@ namespace FormsKruglov
                 lbox.Items.Add(item);
             }
 
-            lbox.Location = new Point(350, 30);
+            lbox.Location = new Point(450, 30);
             lbox.Width = Colors_nimetused.OrderByDescending(n => n.Length).First().Length * 10;
             lbox.Height = Colors_nimetused.Length * 15;
             lbox.SelectedIndexChanged += lbox_SelectedIndexChanged;
@@ -165,7 +165,7 @@ namespace FormsKruglov
         else if (e.Node.Text == "DataGridView")
             {
                 DataSet dataSet = new DataSet("Näide");
-                dataSet.ReadXml("XMLex.xml");
+                dataSet.ReadXml("XMLFile1.xml");
                 DataGridView dgv = new DataGridView();
                 dgv.Location = new Point(200, 200);
                 dgv.Width = 400;
@@ -179,11 +179,13 @@ namespace FormsKruglov
             {
                 MainMenu menu = new MainMenu();
                 MenuItem menuitem1 = new MenuItem("File");
+                MenuItem menuitem2 = new MenuItem("MyFile");
                 menuitem1.MenuItems.Add("Exit",new EventHandler(menuitem1_Exit));
-                menuitem1.MenuItems.Add("Change BG",new EventHandler(menuitem1_BG));
-                menuitem1.MenuItems.Add("Refresh", new EventHandler(menuitem1_Refresh));
-                menuitem1.MenuItems.Add("New Form", new EventHandler(menuitem1_NewForm));
+                menuitem2.MenuItems.Add("Change BG",new EventHandler(menuitem1_BG));
+                menuitem2.MenuItems.Add("Refresh", new EventHandler(menuitem1_Refresh));
+                menuitem2.MenuItems.Add("New Form", new EventHandler(menuitem1_NewForm));
                 menu.MenuItems.Add(menuitem1);
+                menu.MenuItems.Add(menuitem2);
                 this.Menu = menu;
             }
         else if (e.Node.Text == "Tekstikast-Textbox")
@@ -191,7 +193,7 @@ namespace FormsKruglov
             txt_box = new TextBox();
             txt_box.Multiline = true;
             txt_box.Text = "Write here";
-            txt_box.Location = new Point(300, 300);
+            txt_box.Location = new Point(250, 300);
             txt_box.Width = 200;
             txt_box.Height = 200;
             Controls.Add(txt_box);
